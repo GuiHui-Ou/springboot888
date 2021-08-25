@@ -1,8 +1,8 @@
 package com.ou.controller;
 
 
-import com.ou.domain.Books;
-import com.ou.service.BookService;
+import com.ou.domain.Coles;
+import com.ou.service.ColeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,20 +12,23 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Book")
+@RequestMapping("/Cole")
+
 @CrossOrigin(origins = "*",maxAge = 3600)
-public class BookCon {
+
+public class ColeCon {
 
     @Autowired
-    private BookService bookServiceImpl;
+    private ColeService coleServiceImpl;
+
 
     @GetMapping("/queryAll")
-    public List<Books> queryAll(){
-        List<Books> TabsData = bookServiceImpl.queryAll();
-        for (Books book: TabsData
-             ) {
-            System.out.println(book);
+    public List<Coles> queryAll() {
+        List<Coles> colesList = coleServiceImpl.queryAll();
+        for (Coles coles : colesList
+        ) {
+            System.out.println(coles);
         }
-        return TabsData;
+        return colesList;
     }
 }

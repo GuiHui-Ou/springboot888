@@ -1,8 +1,13 @@
 package com.ou;
 
-import com.ou.mapper.BookMapper;
+import com.ou.domain.Coles;
 import com.ou.domain.Books;
+import com.ou.domain.Comments;
+import com.ou.domain.Login;
 import com.ou.service.BookService;
+import com.ou.service.ColeService;
+import com.ou.service.CommentService;
+import com.ou.service.LoginService;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +28,16 @@ class Springboot888ApplicationTests {
 
     @Autowired
     BookService bookServiceImpl;
+
+    @Autowired
+    ColeService coleServiceImpl;
+
+    @Autowired
+    CommentService commentServiceImpl;
+
+    @Autowired
+    LoginService loginServiceImpl;
+
     @Test
     void contextLoads() throws SQLException {
         System.out.println(dataSource.getClass());
@@ -38,4 +53,27 @@ class Springboot888ApplicationTests {
         }
     }
 
+    @Test
+    void queryAll2(){
+        for (Comments comments : commentServiceImpl.queryAll()
+        ) {
+            System.out.println(comments);
+        }
+    }
+
+    @Test
+    void queryAll3(){
+        for (Coles coles : coleServiceImpl.queryAll()
+        ) {
+            System.out.println(coles);
+        }
+    }
+
+    @Test
+    void queryAll4(){
+        for (Login login : loginServiceImpl.queryAll()
+        ) {
+            System.out.println(login);
+        }
+    }
 }
